@@ -29,6 +29,7 @@ setuptools.setup(
         "noggin",
         "facenet-pytorch"
     ],
-    packages=['camera', 'datasets', 'facenet-models'],
+    packages=setuptools.find_packages(where="src"),
+    package_dir={"": "src"},
     python_requires=">=3.6",
 )
