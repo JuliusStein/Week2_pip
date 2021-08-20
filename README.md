@@ -14,10 +14,10 @@ To install this package and its dependencies in a new conda environment, simply 
 ```shell
 conda create -n week2 python=3.8 ipython jupyter notebook numpy matplotlib xarray numba bottleneck scipy
 conda install -n week2 -c conda-forge opencv
-conda install -n week2 pytorch torchvision cpuponly -c conda-forge librosa ffmpeg
+conda install -n week2 pytorch torchvision cpuponly -c pytorch
 conda activate week2
 
-(week 2) pip install -e cogworks_week2
+(week2) pip install -e cogworks_week2
 ```
 # Camera Usage
 Please see this [camera tutorial notebook](https://github.com/CogWorksBWSI/Camera/blob/master/Camera_Tutorial.ipynb) in this repo for details of how to configure your camera.
