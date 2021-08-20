@@ -1,0 +1,13 @@
+ipython
+jupyter
+notebook
+numpy
+scipy
+matplotlib
+numba
+bottleneck
+xarray
+mygrad
+mynn
+noggin
+facenet-pytorch

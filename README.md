@@ -6,7 +6,7 @@ conda install -n week2 -c conda-forge opencv
 conda install -n week2 pytorch torchvision -c pytorch
 conda activate week2
 
-(week2) pip install -e cogworks_week2
+(week2) pip install cogworks_week2
 ```
 
 # Installing this package (Windows/Linux)
@@ -17,7 +17,7 @@ conda install -n week2 -c conda-forge opencv
 conda install -n week2 pytorch torchvision cpuponly -c pytorch
 conda activate week2
 
-(week2) pip install -e cogworks_week2
+(week2) pip install cogworks_week2
 ```
 # Camera Usage
 Please see this [camera tutorial notebook](https://github.com/CogWorksBWSI/Camera/blob/master/Camera_Tutorial.ipynb) in this repo for details of how to configure your camera.

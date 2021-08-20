@@ -1,0 +1,139 @@
+Metadata-Version: 2.1
+Name: cogworks-week2
+Version: 1.0.0
+Summary: Provides resources and required libraries for the Vision/Video Module of CogWorks
+Home-page: https://github.com/JuliusStein/Week2_pip
+Author: Ryan Soklaski (@rsokl)
+Author-email: ry26099@mit.edu
+License: MIT
+Description: # Installing this package (MacOS)
+        To install this package and its dependencies in a new conda environment, simply run:
+        ```shell
+        conda create -n week2 python=3.8
+        conda install -n week2 -c conda-forge opencv
+        conda install -n week2 pytorch torchvision -c pytorch
+        conda activate week2
+        
+        (week2) pip install -e cogworks_week2
+        ```
+        
+        # Installing this package (Windows/Linux)
+        To install this package and its dependencies in a new conda environment, simply run:
+        ```shell
+        conda create -n week2 python=3.8 ipython jupyter notebook numpy matplotlib xarray numba bottleneck scipy
+        conda install -n week2 -c conda-forge opencv
+        conda install -n week2 pytorch torchvision cpuponly -c pytorch
+        conda activate week2
+        
+        (week2) pip install -e cogworks_week2
+        ```
+        # Camera Usage
+        Please see this [camera tutorial notebook](https://github.com/CogWorksBWSI/Camera/blob/master/Camera_Tutorial.ipynb) in this repo for details of how to configure your camera.
+        
+        ```python
+        %matplotlib notebook
+        from camera import take_picture
+        import matplotlib.pyplot as plt
+        img_array = take_picture()  # returns shape-(H, W, C) array
+        
+        fig,ax = plt.subplots()
+        ax.imshow(img_array)
+        ```
+        
+        # Datasets Usage
+        ```python
+        # utilities for downloading cifar-10, mnist, and fashion-mnist
+        # mnist-data is included in this repo
+        from datasets import download_cifar10, download_fashion_mnist, download_mnist
+        
+        # utilities for loading various data sets
+        from datasets import load_mnist, load_fashion_mnist, load_cifar10, ToyData
+        ```
+        
+        By default, all data sets will be downloaded to ~/datasets. You can overwrite this via
+        
+        ```python
+        >>> import datasets
+        >>> datasets.set_path('mydir', mkdir=True)
+        `datasets module: datasets will be loaded from 'C:\Users\You\mydir'
+        ```
+        
+        This will write your `datasets` path to `~/.datasets`.
+        
+        You can restore the default path with:
+        
+        ```python
+        >>> datasets.restore_default_path(True)
+        ```
+        
+        # Facenet Models Usage
+        This is a convenience package for making available [facenet-pytorch](https://github.com/timesler/facenet-pytorch)'s trained face recognition model, which achieves state-of-the-art face recognition results.
+        
+        Please see this [facenet tutorial notebook](https://github.com/CogWorksBWSI/facenet_models/blob/master/facenet_tutorial.ipynb) for a more detailed walkthrough.
+        
+        ``` python
+        from facenet_models import FacenetModel
+        
+        # this will download the pretrained weights (if they haven't already been fetched)
+        # which should take just a few seconds
+        model = FacenetModel()
+        
+        # detect all faces in an image
+        # returns a tuple of (boxes, probabilities, landmarks)
+        # assumes ``pic`` is a numpy array of shape (R, C, 3) (RGB is the last dimension)
+        boxes, probabilities, landmarks = model.detect(pic)
+        
+        # producing a face descriptor for each face
+        # returns a (N, 512) array, where N is the number of boxes
+        # and each descriptor vector is 512-dimensional
+        descriptors = model.compute_descriptors(pic, boxes)
+        ```
+        
+        ## Documentation for facnet_models
+        
+        ```
+        detect(image)
+        
+        Detect faces in an image.
+        
+        Parameters
+        ----------
+        image : np.ndarray, shape=(R, C, 3)
+            The image in which to detect faces.
+        
+        Returns
+        -------
+        Tuple[np.ndarray shape=(N, 4), np.ndarray shape=(N,), np.ndarray shape=(N, 5)]
+            (boxes, probabilities, landmarks) where:
+            - boxes is a shape-(N, 4) array of boxes, where N is the number of faces detected in the image.
+            - probabilities is a shape-(N,) array of probabilities corresponding to each detected face.
+            - landmarks is a shape-(N, 5) arrays of facial landmarks corresponding to each detected face.
+        
+        
+        
+        compute_descriptors(image, boxes)
+        
+        Compute descriptor vectors for the faces contained in ``boxes``.
+        
+        Parameters
+        ----------
+        image : np.ndarray, shape=(R, C, 3)
+            The image in which to detect faces.
+        
+        boxes : np.ndarray, shape=(N, 4)
+            The bounding boxes containing the faces for which to compute descriptors.
+        
+        Returns
+        -------
+        np.ndarray, shape=(N, 128)
+            The descriptor vectors, where N is the number of faces.
+        """
+        ```
+        
+        ## GPU usage
+        
+        The installation instructions above assume no GPU is present. If you have a GPU in your machine and would like to use it to speed up computation, install the GPU version of PyTorch; this code will automatically make use of the GPU. See [PyTorch's website](https://pytorch.org/get-started/locally/) for installing the GPU version on your machine.
+        
+Platform: UNKNOWN
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown

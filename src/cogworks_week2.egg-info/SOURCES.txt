@@ -1,0 +1,14 @@
+README.md
+pyproject.toml
+setup.py
+src/camera/__init__.py
+src/cogworks_week2.egg-info/PKG-INFO
+src/cogworks_week2.egg-info/SOURCES.txt
+src/cogworks_week2.egg-info/dependency_links.txt
+src/cogworks_week2.egg-info/not-zip-safe
+src/cogworks_week2.egg-info/requires.txt
+src/cogworks_week2.egg-info/top_level.txt
+src/datasets/__init__.py
+src/datasets/download_utils.py
+src/datasets/toydata.py
+src/facenet_models/__init__.py
